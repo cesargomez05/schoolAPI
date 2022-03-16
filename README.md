@@ -35,10 +35,10 @@ Así mismo, se cuenta con una base de datos en [SQLite](https://www.google.com/s
 
 ### Lógica de la aplicación
 La implementación de la parte lógica de la API es realizada en diferentes lenguajes de programación del lado Backend (apoyado en diferentes frameworks); los cuales se describen a continuación.
-- Java: [Spring Boot](https://www.google.com/search?q=Spring+Boot) ([ver proyecto](./springboot))
-- PHP: [Laravel](https://www.google.com/search?q=Laravel) ([ver proyecto](./laravel))
-- PHP: [Lumen](https://www.google.com/search?q=Lumen) ([ver proyecto](./lumen))
-- Node.js: [Express](https://www.google.com/search?q=Express.js) ([ver proyecto](./expressjs))
+- Java: [Spring Boot](https://www.google.com/search?q=Spring+Boot) ([ver proyecto](https://github.com/cesargomez05/schoolapi_springboot))
+- PHP: [Laravel](https://www.google.com/search?q=Laravel) ([ver proyecto](https://github.com/cesargomez05/schoolapi_laravel))
+- PHP: [Lumen](https://www.google.com/search?q=Lumen) ([ver proyecto](https://github.com/cesargomez05/schoolapi_lumen))
+- Node.js: [Express](https://www.google.com/search?q=Express.js) ([ver proyecto](https://github.com/cesargomez05/schoolapi_expressjs))
 - Python: [Flask](https://www.google.com/search?q=Flask) (en desarrollo)
 - Python: [FastAPI](https://www.google.com/search?q=FastAPI) (en desarrollo)
 

@@ -39,8 +39,7 @@ La implementación de la parte lógica de la API es realizada en diferentes leng
 - PHP: [Laravel](https://www.google.com/search?q=Laravel) ([ver proyecto](https://github.com/cesargomez05/schoolapi_laravel))
 - PHP: [Lumen](https://www.google.com/search?q=Lumen) ([ver proyecto](https://github.com/cesargomez05/schoolapi_lumen))
 - Node.js: [Express](https://www.google.com/search?q=Express.js) ([ver proyecto](https://github.com/cesargomez05/schoolapi_expressjs))
-- Python: [Flask](https://www.google.com/search?q=Flask) (en desarrollo)
-- Python: [FastAPI](https://www.google.com/search?q=FastAPI) (en desarrollo)
+- Python: [Flask](https://www.google.com/search?q=Flask) ([ver proyecto](https://github.com/cesargomez05/schoolapi_flask))
 
 ### Usos de la API
 La API **ScholarAPI** puede ser consumida desde:

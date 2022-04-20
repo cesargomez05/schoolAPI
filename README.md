@@ -38,7 +38,8 @@ La implementación de la parte lógica de la API es realizada en diferentes leng
 - Java: [Spring Boot](https://www.google.com/search?q=Spring+Boot) ([ver proyecto](https://github.com/cesargomez05/schoolapi_springboot))
 - PHP: [Laravel](https://www.google.com/search?q=Laravel) ([ver proyecto](https://github.com/cesargomez05/schoolapi_laravel))
 - PHP: [Lumen](https://www.google.com/search?q=Lumen) ([ver proyecto](https://github.com/cesargomez05/schoolapi_lumen))
-- Node.js: [Express](https://www.google.com/search?q=Express.js) ([ver proyecto](https://github.com/cesargomez05/schoolapi_expressjs))
+- Node.js: [Express.js](https://www.google.com/search?q=Express.js) ([ver proyecto](https://github.com/cesargomez05/schoolapi_expressjs))
+- Node.js: [Sails.js](https://www.google.com/search?q=Sails.js) (en construcción)
 - Python: [Flask](https://www.google.com/search?q=Flask) ([ver proyecto](https://github.com/cesargomez05/schoolapi_flask))
 
 ### Usos de la API
@@ -76,13 +77,18 @@ Permite gestionar la información de los estudiantes.
 
 | Campo | Descripción
 | - | - |
-| `id` | Id del estudiante (`_id` para MongoDB). |
+| `id` | Id del estudiante (`_id` para MongoDB).<br>**Nota**: este atributo no estará disponible para el rol **Student**. |
 | `name` | Nombre del estudiante. |
 | `lastName` | Apellidos del estudiante. |
 | `email` | Correo electrónico del estudiante. |
 
 #### GET `/students`
 Obtiene la lista de estudiantes.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
 
 ##### Parámetros de consulta
 > base_url/{database}/students?value=value&page=1
@@ -120,6 +126,11 @@ Obtiene la lista de estudiantes.
 #### GET `/students/STUDENT_ID`
 Obtiene los datos de un estudiante.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -145,6 +156,11 @@ Obtiene los datos de un estudiante.
 #### GET `/students/me`
 Obtiene los datos del estudiante autenticado en la API (si este tiene rol Estudiante).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
+
 ##### Respuesta
 > 200 OK
 ```json
@@ -163,6 +179,11 @@ Obtiene los datos del estudiante autenticado en la API (si este tiene rol Estudi
 
 #### POST `/students`
 Inserta un nuevo estudiante.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Cuerpo de la petición
 ```json
@@ -196,6 +217,11 @@ Inserta un nuevo estudiante.
 
 #### PUT `/students/STUDENT_ID`
 Sobreescribe los datos de un estudiante.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -234,6 +260,11 @@ Sobreescribe los datos de un estudiante.
 #### PUT `/students/me`
 Sobreescribe los datos del estudiante autenticado en la API (si este tiene rol Estudiante).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
+
 ##### Cuerpo de la petición
 ```json
 {
@@ -264,6 +295,11 @@ Sobreescribe los datos del estudiante autenticado en la API (si este tiene rol E
 
 #### PATCH `/students/STUDENT_ID`
 Actualiza los datos de un estudiante.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -302,6 +338,11 @@ Actualiza los datos de un estudiante.
 #### PATCH `/students/me`
 Actualiza los datos del estudiante autenticado en la API (si este tiene rol Estudiante).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
+
 ##### Cuerpo de la petición
 ```json
 {
@@ -333,6 +374,11 @@ Actualiza los datos del estudiante autenticado en la API (si este tiene rol Estu
 #### DELETE `/students/STUDENT_ID`
 Elimina los datos de un estudiante.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -360,7 +406,7 @@ Permite gestionar la información de los instructores.
 
 | Campo | Descripción
 | - | - |
-| `id` | Id del instructor (`_id` para MongoDB). |
+| `id` | Id del instructor (`_id` para MongoDB).<br>**Nota**: este atributo no estará disponible para el rol **Instructor** |
 | `name` | Nombre del instructor. |
 | `lastName` | Apellidos del instructor. |
 | `email` | Correo electrónico del instructor. |

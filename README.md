@@ -77,7 +77,7 @@ Permite gestionar la información de los estudiantes.
 
 | Campo | Descripción
 | - | - |
-| `id` | Id del estudiante (`_id` para MongoDB).<br>**Nota**: este atributo no estará disponible para el rol **Student**. |
+| `id` | Id del estudiante (`_id` para MongoDB).<br>**Nota**: este atributo no será visible para el rol **Student**. |
 | `name` | Nombre del estudiante. |
 | `lastName` | Apellidos del estudiante. |
 | `email` | Correo electrónico del estudiante. |
@@ -406,13 +406,18 @@ Permite gestionar la información de los instructores.
 
 | Campo | Descripción
 | - | - |
-| `id` | Id del instructor (`_id` para MongoDB).<br>**Nota**: este atributo no estará disponible para el rol **Instructor** |
+| `id` | Id del instructor (`_id` para MongoDB).<br>**Nota**: este atributo no será visible para el rol **Instructor** |
 | `name` | Nombre del instructor. |
 | `lastName` | Apellidos del instructor. |
 | `email` | Correo electrónico del instructor. |
 
 #### GET `/instructors`
 Obtiene la lista de instructores.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de consulta
 > base_url/{database}/instructors?value=value&page=1
@@ -450,6 +455,11 @@ Obtiene la lista de instructores.
 #### GET `/instructors/INSTRUCTOR_ID`
 Obtiene los datos de un instructor.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -475,6 +485,11 @@ Obtiene los datos de un instructor.
 #### GET `/instructors/me`
 Obtiene los datos del instructor autenticado en la API (si este tiene rol Instructor).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ✔️
+- **Student**: ❌
+
 ##### Respuesta
 > 200 OK
 ```json
@@ -493,6 +508,11 @@ Obtiene los datos del instructor autenticado en la API (si este tiene rol Instru
 
 #### POST `/instructors`
 Inserta un nuevo instructor.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Cuerpo de la petición
 ```json
@@ -526,6 +546,11 @@ Inserta un nuevo instructor.
 
 #### PUT `/instructors/INSTRUCTOR_ID`
 Sobreescribe los datos de un instructor.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -564,6 +589,11 @@ Sobreescribe los datos de un instructor.
 #### PUT `/instructors/me`
 Sobreescribe los datos del instructor autenticado en la API (si este tiene rol Instructor).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ✔️
+- **Student**: ❌
+
 ##### Cuerpo de la petición
 ```json
 {
@@ -594,6 +624,11 @@ Sobreescribe los datos del instructor autenticado en la API (si este tiene rol I
 
 #### PATCH `/instructors/INSTRUCTOR_ID`
 Actualiza los datos de un instructor.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -632,6 +667,11 @@ Actualiza los datos de un instructor.
 #### PATCH `/instructors/me`
 Actualiza los datos del instructor autenticado en la API (si este tiene rol Instructor).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ✔️
+- **Student**: ❌
+
 ##### Cuerpo de la petición
 ```json
 {
@@ -663,6 +703,11 @@ Actualiza los datos del instructor autenticado en la API (si este tiene rol Inst
 #### DELETE `/instructors/INSTRUCTOR_ID`
 Elimina los datos de un instructor.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -685,6 +730,11 @@ Elimina los datos de un instructor.
 
 #### GET `/instructors/INSTRUCTOR_ID/courses`
 Obtiene la lista  de cursos asociados a un instructor.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -727,6 +777,11 @@ Obtiene la lista  de cursos asociados a un instructor.
 
 #### GET `/instructors/me/courses`
 Obtiene la lista  de cursos asociados al instructor autenticado en la API (si este tiene rol Instructor).
+
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ✔️
+- **Student**: ❌
 
 ##### Parámetros de consulta
 > base_url/{database}/instructors/me/courses?value=value&page=1
@@ -773,10 +828,15 @@ Permite gestionar la información de los cursos.
 | `id` | Id del curso (`_id` para MongoDB). |
 | `title` | Título del curso. |
 | `description` | Descripción del curso. |
-| `instructor` | Información del instructor asociado al curso (ver [atributos del instructor](#atributos-instructor)). |
+| `instructor` | Información del instructor asociado al curso (ver [atributos del instructor](#atributos-instructor)).<br>**Nota**: el atributo `id` del instructor no será visible para los roles **Instructor** y **Student**. |
 
 #### GET `/courses`
 Obtiene la lista de cursos.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ✔️
 
 ##### Parámetros de consulta
 > base_url/{database}/courses?value=value&page=1
@@ -824,6 +884,11 @@ Obtiene la lista de cursos.
 #### GET `/courses/COURSE_ID`
 Obtiene los datos de un curso.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ✔️
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -853,6 +918,13 @@ Obtiene los datos de un curso.
 
 #### POST `/courses`
 Inserta un nuevo curso.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, este se asociará al curso a crear.
 
 ##### Cuerpo de la petición
 ```json
@@ -900,6 +972,13 @@ Inserta un nuevo curso.
 #### PUT `/courses/COURSE_ID`
 Sobreescribe los datos de un curso.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, solamente permitirá actualizar si este es instructor del curso.
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -942,6 +1021,13 @@ Sobreescribe los datos de un curso.
 
 #### PATCH `/courses/COURSE_ID`
 Actualiza los datos de un curso.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, solamente permitirá actualizar si este es instructor del curso.
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -988,6 +1074,13 @@ Actualiza los datos de un curso.
 #### DELETE `/courses/COURSE_ID`
 Elimina los datos de un curso.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, solamente permitirá eliminar si este es instructor del curso.
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1021,6 +1114,11 @@ Permite gestionar la información de los temas asociados a un determinado curso.
 
 #### GET `/courses/COURSE_ID/themes`
 Obtiene la lista de temas asociados a un determinado curso.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ✔️
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -1063,6 +1161,11 @@ Obtiene la lista de temas asociados a un determinado curso.
 #### GET `/courses/COURSE_ID/themes/THEME_ID`
 Obtiene los datos de un tema.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ✔️
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1087,6 +1190,13 @@ Obtiene los datos de un tema.
 
 #### POST `/courses/COURSE_ID/themes`
 Inserta un nuevo tema.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, solamente permitirá insertar el tema si este es instructor del curso.
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -1125,6 +1235,13 @@ Inserta un nuevo tema.
 #### PUT `/courses/COURSE_ID/themes/THEME_ID`
 Sobreescribe los datos de un tema.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, solamente permitirá actualizar el tema si este es instructor del curso.
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1160,6 +1277,13 @@ Sobreescribe los datos de un tema.
 
 #### PATCH `/courses/COURSE_ID/themes/THEME_ID`
 Actualiza los datos de un tema.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, solamente permitirá actualizar el tema si este es instructor del curso.
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -1197,6 +1321,13 @@ Actualiza los datos de un tema.
 #### DELETE `/courses/COURSE_ID/themes/THEME_ID`
 Elimina los datos de un tema.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, solamente permitirá eliminar el tema si este es instructor del curso.
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1223,6 +1354,11 @@ Permite gestionar la asociación de cada uno de los cursos con cada uno de los e
 
 #### GET `students/STUDENT_ID/courses`
 Obtiene la lista de cursos asociados a un determinado estudiante.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -1277,6 +1413,13 @@ Obtiene la lista de cursos asociados a un determinado estudiante.
 #### GET `students/me/courses`
 Obtiene la lista de cursos asociados al estudiante autenticado en la API (si este tiene rol Estudiante).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
+
+> **Nota**: el atributo `id` del instructor no será visible para el rol **Student**.
+
 ##### Parámetros de consulta
 > base_url/{database}/students/me/courses?value=value&page=1
 
@@ -1294,7 +1437,6 @@ Obtiene la lista de cursos asociados al estudiante autenticado en la API (si est
 		"title": "string",
 		"description": "string",
 		"instructor": {
-			"id": "string",
 			"name": "string",
 			"lastName": "string",
 			"email": "string"
@@ -1305,7 +1447,6 @@ Obtiene la lista de cursos asociados al estudiante autenticado en la API (si est
 		"title": "string",
 		"description": "string",
 		"instructor": {
-			"id": "string",
 			"name": "string",
 			"lastName": "string",
 			"email": "string"
@@ -1323,6 +1464,11 @@ Obtiene la lista de cursos asociados al estudiante autenticado en la API (si est
 
 #### POST `students/STUDENT_ID/courses`
 Asocia un curso a un determinado estudiante.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -1357,6 +1503,11 @@ Asocia un curso a un determinado estudiante.
 #### POST `students/me/courses`
 Asocia un curso al estudiante autenticado en la API (si este tiene rol Estudiante).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
+
 ##### Cuerpo de la petición
 ```json
 {
@@ -1384,6 +1535,11 @@ Asocia un curso al estudiante autenticado en la API (si este tiene rol Estudiant
 #### DELETE `students/STUDENT_ID/courses/COURSE_ID`
 Elimina la asociación de un curso sobre un estudiante.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ❌
+- **Student**: ❌
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1407,6 +1563,11 @@ Elimina la asociación de un curso sobre un estudiante.
 #### DELETE `students/me/courses/COURSE_ID`
 Elimina la asociación de un curso sobre el estudiante autenticado en la API (si este tiene rol Estudiante).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1428,6 +1589,13 @@ Elimina la asociación de un curso sobre el estudiante autenticado en la API (si
 
 #### GET `courses/COURSE_ID/students`
 Obtiene la lista de estudiantes asociados a un determinado curso.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, este debe ser el instructor asociado al respectivo curso.
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -1472,6 +1640,13 @@ Obtiene la lista de estudiantes asociados a un determinado curso.
 #### POST `courses/COURSE_ID/students`
 Asocia un estudiante a un determinado curso.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, este debe ser el instructor asociado al respectivo curso.
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1505,6 +1680,13 @@ Asocia un estudiante a un determinado curso.
 #### DELETE `courses/COURSE_ID/students/STUDENT_ID`
 Elimina la asociación de un estudiante sobre un curso.
 
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, este debe ser el instructor asociado al respectivo curso.
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1530,6 +1712,13 @@ Permite gestionar los temas completados por cada uno de los estudiantes asociado
 
 #### GET `courses/COURSE_ID/themes/THEME_ID/students`
 Obtiene la lista de los estudiantes que hayan completado un determinado tema.
+
+##### Permisos
+- **Admin**: ✔️
+- **Instructor**: ✔️
+- **Student**: ❌
+
+> Si el usuario autenticado tiene rol **Instructor**, este debe ser el instructor asociado al respectivo curso.
 
 ##### Parámetros de ruta
 | Parámetro | Descripción
@@ -1575,6 +1764,11 @@ Obtiene la lista de los estudiantes que hayan completado un determinado tema.
 #### POST `courses/COURSE_ID/themes/THEME_ID/students`
 Adiciona un tema como completado por parte del estudiante autenticado en la API (si este tiene rol Estudiante).
 
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
+
 ##### Parámetros de ruta
 | Parámetro | Descripción
 | - | - |
@@ -1598,6 +1792,11 @@ Adiciona un tema como completado por parte del estudiante autenticado en la API 
 
 #### DELETE `courses/COURSE_ID/themes/THEME_ID/students`
 Elimina un tema como completado por parte del estudiante autenticado en la API (si este tiene rol Estudiante).
+
+##### Permisos
+- **Admin**: ❌
+- **Instructor**: ❌
+- **Student**: ✔️
 
 ##### Parámetros de ruta
 | Parámetro | Descripción

@@ -42,7 +42,7 @@ La implementación de la parte lógica de la API es realizada en diferentes leng
 - Node.js: [Sails.js](https://www.google.com/search?q=Sails.js) ([ver proyecto](https://github.com/cesargomez05/schoolapi_sailsjs))
 - Python: [Flask](https://www.google.com/search?q=Flask) ([ver proyecto](https://github.com/cesargomez05/schoolapi_flask))
 - Python: [FastAPI](https://www.google.com/search?q=FastAPI) ([ver proyecto](https://github.com/cesargomez05/schoolapi_fastapi))
-- Node.js: [Nest.js](https://www.google.com/search?q=Nest.js) (en construcción)
+- Node.js: [Nest.js](https://www.google.com/search?q=Nest.js) ([ver proyecto](https://github.com/cesargomez05/schoolapi_nestjs))
 
 ### Usos de la API
 La API **ScholarAPI** puede ser consumida desde:

@@ -44,6 +44,7 @@ La implementación de la parte lógica de la API es realizada en diferentes leng
 - Python: [FastAPI](https://www.google.com/search?q=FastAPI) ([ver proyecto](https://github.com/cesargomez05/schoolapi_fastapi))
 - Node.js: [Nest.js](https://www.google.com/search?q=Nest.js) ([ver proyecto](https://github.com/cesargomez05/schoolapi_nestjs))
 - Kotlin: [Spring Boot](https://www.google.com/search?q=Spring+Boot) (en construcción)
+- PHP: [CodeIgniter](https://www.google.com/search?q=CodeIgniter) (próximamente)
 
 ### Usos de la API
 La API **ScholarAPI** puede ser consumida desde:
